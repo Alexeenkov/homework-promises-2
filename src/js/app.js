@@ -1,13 +1,9 @@
-export default class ArrayBufferConverter {
-  constructor() {
-    this.container = null;
-  }
+import GameSavingLoader from './GameSavedLoader';
 
-  load(data) {
-    this.container = new Uint16Array(data);
+(async () => {
+  try {
+    return await GameSavingLoader.load();
+  } catch (err) {
+    return Promise.reject(err);
   }
-
-  toString() {
-    return [...this.container].map((symbol) => String.fromCharCode(symbol)).join('');
-  }
-}
+})();
